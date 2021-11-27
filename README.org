@@ -1,1 +1,74 @@
 #+TITLE: Trabalho prático de Teste de Software
+
+* Integrantes
+
+ - Bárbara ...
+ - Flávio Lúcio Corrêa Júnior
+ - Vinícios Julião ...
+
+* Descrição do trabalho
+
+O trabalho consiste na escrita de um programa e um conjunto de testes. Os testes devem seguir as boas práticas descritas nas aulas da disciplina. O trabalho será dividido em duas etapas que consistem em:
+
+** Etapa 1
+
+- Projetar e implementar um sistema e software
+- Implementar 50 testes de unidade (API públicas, comportamento, focados, não-complexos e etc)
+- Configurar ferramenta de CI/CD Github Actions e rodar a bateria de testes em cada commit
+
+** Etapa 2
+
+@TODO
+
+* Projeto do sistema
+
+*** Qual sistema implementar?
+
+A principal premissa a seguir é que seja algo de rápida implementação e alta testabilidade. Alguns exemplos estão propostos a seguir:
+
+- Ferramenta de linha de comando (CLI): grep, wget, curl, ls, cd
+- Sistema web (cliente/servidor): CRUD básico, TODO app
+- Biblioteca: estrutura de dados, manipulação de arquivos
+- Linguagem de programação: DSL, subconjunto de lisp ou python
+- @TODO outras sugestões?
+
+*** Com qual tech stack?
+
+As tecnologias escolhidas dependerão do sistema escolhido.
+
+**** Linguagem de programação
+
+Algumas opções (kudos p/ quem topar fazer em uma das últimas 4):
+
+- C/C++
+- Python
+- Javascript
+- Go
+- Rust
+- Haskell
+- Elixir
+- Fsharp
+- @TODO outras?
+
+**** SGBD
+
+@TODO
+
+**** Bibliotecas / Frameworks
+
+@TODO
+
+*** Frameworks de teste?
+
+Seguindo o modelo da pirâmide de testes, para cada tipo deve-se escolher uma biblioteca/framework para implementá-los:
+
+- Testes de sistema (E2E): @TODO
+- Testes de integração: @TODO
+- Testes de unidade: @TODO
+
+* Desenvolvimento
+
+- [ ] decidir sistema e tecnologias
+- [ ] configurar github actions
+- [ ] separação de tarefas
+- [ ] ...
