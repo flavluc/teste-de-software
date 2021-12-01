@@ -83,32 +83,38 @@ Seguindo o modelo da pirâmide de testes, para cada tipo deve-se escolher uma bi
 * Como executar
 
 Instale a ferramenta de gerenciamento de dependências `poetry`:
+
 <#+begin_src
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 source $HOME/.poetry/env
 #+end_src
 
 Ative o ambiente virtual:
+
 <#+begin_src
 poetry shell
 #+end_src
 
 Instale as dependências:
+
 <#+begin_src
 poetry install
 #+end_src
 
 Rode a bateria de testes:
+
 <#+begin_src
 poetry run pytest --cov .
 #+end_src
 
 Rode o programa principal:
+
 <#+begin_src
 poetry run python main.py
 #+end_src
 
 Você pode querer formatar o código antes de abrir um PR, isso pode ser feito direto no seu editor de texto ou executando a CLI:
+
 <#+begin_src
 black .
 #+end_src
