@@ -29,8 +29,6 @@ jobs:
           - 'macos-latest'
           - 'windows-latest'
         python-version:
-          - '3.7'
-          - '3.8'
           - '3.9'
     steps:
       - name: Checkout code
@@ -70,8 +68,7 @@ jobs:
       - name: Install deps
         if: steps.cache-deps.cache-hit != 'true'
         run: |
-          poetry config virtualenvs.in-project true
-          poetry install --no-interaction
+          poetry install
       - name: Run tests
         run: poetry run pytest -v
       - name: Build artifacts
