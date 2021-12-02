@@ -84,5 +84,5 @@ def test_recursive_search_nonexisting_element(stack):
     assert recursive_binary_search(stack, 20) == -1
 
 
-def test_search_in_empty_stack(stack):
+def test_recursive_search_in_empty_stack(stack):
     assert recursive_binary_search(stack, 20) == -1
