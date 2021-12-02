@@ -19,9 +19,9 @@ jobs:
       - uses: actions/setup-python@v2.2.2
       - uses: psf/black@stable
       - name: Check isort formatting
-        run: isort . --check
+        run: poetry run isort . --check
       - name: Check flake8 linting
-        run: flake8 . --count
+        run: poetry run flake8 . --count
   build:
     name: Build tool
     runs-on: ${{ matrix.os }}
