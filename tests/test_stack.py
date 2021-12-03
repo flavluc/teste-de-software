@@ -50,8 +50,11 @@ def test_size_after_push_pop(stack):
     assert stack.size() == 0
 
 
-def test_serialization(stack):
+def test_empty_serialization(stack):
     assert str(stack) == "[]"
+
+
+def test_populated_serialization(stack):
     stack.push(1)
     stack.push(2)
     assert str(stack) == "[1, 2]"
