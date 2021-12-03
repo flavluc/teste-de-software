@@ -53,6 +53,7 @@ def test_size_after_enqueue_dequeue(queue):
 def test_empty_serialization(queue):
     assert str(queue) == "[]"
 
+
 def test_populated_serialization(queue):
     queue.enqueue(1)
     queue.enqueue(2)
