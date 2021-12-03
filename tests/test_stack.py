@@ -40,7 +40,6 @@ def test_pop_is_LIFO(stack):
 
 
 def test_size_after_push_pop(stack):
-    assert stack.size() == 0
     stack.push(1)
     stack.push(2)
     stack.push(3)
