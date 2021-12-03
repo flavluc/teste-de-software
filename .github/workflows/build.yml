@@ -11,17 +11,9 @@ defaults:
     shell: bash
 
 jobs:
-  black-formatting-check:
-    name: Check formatting
-    runs-on: 'ubuntu-latest'
-    steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: actions/setup-python@v2.2.2
-      - uses: psf/black@stable
   build:
     name: Build tool
     runs-on: ${{ matrix.os }}
-    needs: black-formatting-check
     strategy:
       matrix:
         os:
@@ -69,7 +61,13 @@ jobs:
         if: steps.cache-deps.cache-hit != 'true'
         run: |
           poetry install
+      - name: Check black formatting
+        run: poetry run black --check --diff .
+      - name: Check isort formatting
+        run: poetry run isort . --check
+      - name: Check flake8 linting
+        run: poetry run flake8 . --count
       - name: Run tests
-        run: poetry run pytest -v
+        run: poetry run pytest --cov --cov-fail-under=100 .
       - name: Build artifacts
         run: poetry build
