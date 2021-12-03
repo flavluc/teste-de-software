@@ -40,7 +40,6 @@ def test_dequeue_is_FIFO(queue):
 
 
 def test_size_after_enqueue_dequeue(queue):
-    assert queue.size() == 0
     queue.enqueue(1)
     queue.enqueue(2)
     queue.enqueue(3)
@@ -51,8 +50,10 @@ def test_size_after_enqueue_dequeue(queue):
     assert queue.size() == 0
 
 
-def test_serialization(queue):
+def test_empty_serialization(queue):
     assert str(queue) == "[]"
+
+def test_populated_serialization(queue):
     queue.enqueue(1)
     queue.enqueue(2)
     assert str(queue) == "[1, 2]"
