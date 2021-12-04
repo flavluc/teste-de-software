@@ -50,7 +50,3 @@ class Tree:
     def get_node_content(self, node_id):
         self.__validate_node_existence(node_id)        
         return self._nodes[node_id].content
-
-
-
-        

@@ -23,7 +23,7 @@ def test_tree_correct_path(tree):
     assert tree.get_path_until(8) == [0, 8]
 
 def test_tree_path_for_unexistent_node(tree):
-    with pytest.raises(Exception) as  exception_info:
+    with pytest.raises(Exception) as  _:
         tree.get_path_until(10)
     
 def test_content_updating(tree):
@@ -31,11 +31,11 @@ def test_content_updating(tree):
     assert tree.get_node_content(0) == 1000
 
 def test_content_updating_for_unexistent_node(tree):
-    with pytest.raises(Exception) as  exception_info:
+    with pytest.raises(Exception) as  _:
         tree.update_node_content(1, None)
 
 def test_adding_node_to_unexistent_parent(tree):
-    with pytest.raises(Exception) as  exception_info:
+    with pytest.raises(Exception) as  _:
         tree.add_node(1, 2, None)
 
 def test_node_is_not_leaf(tree):
@@ -47,13 +47,13 @@ def test_node_is_leaf(tree):
     assert tree.is_leaf(1)
 
 def test_node_is_leaf_for_unexistent_node(tree):
-    with pytest.raises(Exception) as  exception_info:
+    with pytest.raises(Exception) as  _:
         assert tree.is_leaf(1)
 
 def test_getting_node_content_for_unexistent_node(tree):
-    with pytest.raises(Exception) as  exception_info:
+    with pytest.raises(Exception) as  _:
         assert tree.get_node_content(1)
 
 def test_adding_repeating_node(tree):
-    with pytest.raises(Exception) as  exception_info:
+    with pytest.raises(Exception) as  _:
         assert tree.add_node(0, 0, None)
