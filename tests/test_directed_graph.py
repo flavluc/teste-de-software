@@ -14,7 +14,7 @@ def test_directed_empty(directedGraph):
 
 def test_directed_graph_adding_one_node_none_content(directedGraph):
     directedGraph.add_node(1, None)
-    assert directedGraph.get_node_content(1) == None
+    assert directedGraph.get_node_content(1) is None
 
 
 def test_directed_graph_create_one_directed_egde(directedGraph):

@@ -14,7 +14,7 @@ def test_undirected_graph_empty(undirectedGraph):
 
 def test_undirected_grap_adding_one_node_none_content(undirectedGraph):
     undirectedGraph.add_node(1, None)
-    assert undirectedGraph.get_node_content(1) == None
+    assert undirectedGraph.get_node_content(1) is None
 
 
 def test_undirected_graph_create_one_undirected_egde(undirectedGraph):
