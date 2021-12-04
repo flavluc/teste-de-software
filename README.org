@@ -2,9 +2,9 @@
 
 * Integrantes
 
- - Bárbara ...
+ - Bárbara Gomes Ribeiro
  - Flávio Lúcio Corrêa Júnior
- - Vinícios Julião ...
+ - Vinícios Julião
 
 * Descrição do trabalho
 
@@ -26,13 +26,18 @@ O trabalho consiste na escrita de um programa e um conjunto de testes. Os testes
 
 A principal premissa a seguir é que seja algo de rápida implementação e alta testabilidade. Seguindo essa linha, decidiu-se implementar uma biblioteca de algoritmos e estruturas de dados. O sistema consiste nos seguintes módulos:
 
-- `binary_search`
 - `queue`
+- `stack`
+- `linked list`
+- `undirected graph`
+- `directed graph`
+- `tree`
 - `quick_sort`
 - `merge_sort`
-- `stack`
-- `graph`
-- `tree`
+- `bubble sort`
+- `binary_search`
+- `BFS`
+- `DFS`
 
 *** Com qual tech stack?
 
