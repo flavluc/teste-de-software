@@ -3,6 +3,7 @@ class Node:
         self.content = content
         self.next = None
 
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -23,11 +24,11 @@ class LinkedList:
         while current:
             plist.append(current.content)
             current = current.next
-        
+
         return plist
 
     def empty(self):
-        return self.head == None
+        return self.head is None
 
     def insert_head(self, content):
         new_head = Node(content)
@@ -37,13 +38,13 @@ class LinkedList:
     def insert_tail(self, content):
         current = self.head
 
-        if current == None:
+        if current is None:
             self.head = Node(content)
         else:
             while current.next:
                 current = current.next
             current.next = Node(content)
-    
+
     def insert_nth(self, content, n):
         if (n < 0) or (n > self.__len__()):
             raise "Index out of range"
@@ -55,7 +56,7 @@ class LinkedList:
         else:
             current = self.head
 
-            for i in range(n-1):
+            for i in range(n - 1):
                 current = current.next
             new_node = Node(content)
             new_node.next = current.next
@@ -76,7 +77,7 @@ class LinkedList:
         current.next = None
 
         return deleted
-    
+
     def delete_nth(self, n):
         if (n < 0) or (n >= self.__len__()):
             raise "Index out of range"
@@ -88,7 +89,7 @@ class LinkedList:
         else:
             current = self.head
 
-            for i in range(n-1):
+            for i in range(n - 1):
                 current = current.next
             deleted = current.next
             current.next = current.next.next

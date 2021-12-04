@@ -24,61 +24,25 @@ O trabalho consiste na escrita de um programa e um conjunto de testes. Os testes
 
 *** Qual sistema implementar?
 
-A principal premissa a seguir é que seja algo de rápida implementação e alta testabilidade. Alguns exemplos estão propostos a seguir:
+A principal premissa a seguir é que seja algo de rápida implementação e alta testabilidade. Seguindo essa linha, decidiu-se implementar uma biblioteca de algoritmos e estruturas de dados. O sistema consiste nos seguintes módulos:
 
-- Ferramenta de linha de comando (CLI): grep, wget, curl, ls, cd
-- Sistema web (cliente/servidor): CRUD básico, TODO app
-- Biblioteca: estrutura de dados, manipulação de arquivos
-- Linguagem de programação: DSL, subconjunto de lisp ou python
-- @TODO outras sugestões?
+- `binary_search`
+- `queue`
+- `quick_sort`
+- `merge_sort`
+- `stack`
+- `graph`
+- `tree`
 
 *** Com qual tech stack?
 
-As tecnologias escolhidas dependerão do sistema escolhido.
+As tecnologias escolhidas foram:
 
-**** Linguagem de programação
-
-Algumas opções (kudos p/ quem topar fazer em uma das últimas 4):
-
-- C/C++
-- Python
-- Javascript
-- Go
-- Rust
-- Haskell
-- Elixir
-- Fsharp
-- @TODO outras?
-
-**** SGBD
-
-@TODO
-
-**** Bibliotecas / Frameworks
-
-@TODO
-
-*** Frameworks de teste?
-
-Seguindo o modelo da pirâmide de testes, para cada tipo deve-se escolher uma biblioteca/framework para implementá-los:
-
-- Testes de sistema (E2E): @TODO
-- Testes de integração: @TODO
-- Testes de unidade: @TODO
-
-* Desenvolvimento
-
-- [X] decidir sistema e tecnologias
-- [3/7] configurar github actions
-  - [X] boilerplate setup
-  - [X] rodar testes com pytest
-  - [X] rodar CI em diferentes máquinas
-  - [ ] exigir cobertura de 100%
-  - [ ] exigir formatação do `isort`
-  - [ ] exigir type checking do `mypy`
-  - [ ] exigir lint checking do `flake8`
-- [X] separação de tarefas
-- [ ] ...
+- Linguagem de programação: Python
+- Gerenciador de dependências: Poetry
+- Biblioteca de testes: Pytest
+- Linter: Flake8
+- Formatter: Black, Isort
 
 * Como executar
 
@@ -113,7 +77,15 @@ Rode o programa principal:
 poetry run python main.py
 #+end_src
 
-Você pode querer formatar o código antes de abrir um PR, isso pode ser feito direto no seu editor de texto ou executando a CLI:
+Você pode querer formatar o código ou rodar o linter antes de abrir um PR, isso pode ser feito direto no seu editor de texto ou executando a CLI:
+
+- Linter:
+
+#+begin_src
+flake8 . --count
+#+end_src
+
+- Formatter:
 
 #+begin_src
 black .

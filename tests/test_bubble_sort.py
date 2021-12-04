@@ -19,12 +19,12 @@ def array():
 
 
 def test_sort_empty(empty_array):
-    bubble_sort(empty_array) 
+    bubble_sort(empty_array)
     assert empty_array == empty_array
 
 
 def test_sort_sorted(sorted_array):
-    bubble_sort(sorted_array) 
+    bubble_sort(sorted_array)
     assert sorted_array == sorted_array
 
 
