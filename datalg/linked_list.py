@@ -82,9 +82,9 @@ class LinkedList:
             raise "Index out of range"
 
         if n == 0:
-            self.delete_head(content)
+            return self.delete_head()
         elif n == self.__len__() - 1:
-            self.delete_tail(content)
+            return self.delete_tail()
         else:
             current = self.head
 
