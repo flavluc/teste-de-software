@@ -68,6 +68,6 @@ jobs:
       - name: Check flake8 linting
         run: poetry run flake8 . --count
       - name: Run tests
-        run: poetry run pytest --cov --cov-fail-under=100 .
+        run: poetry run pytest .
       - name: Build artifacts
         run: poetry build
