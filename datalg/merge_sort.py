@@ -11,14 +11,14 @@ def _merge_sort(array: list[int], left: int, right: int) -> None:
     mid = left + (right - left) // 2
 
     _merge_sort(array, left, mid)
-    _merge_sort(array, mid+1, right)
+    _merge_sort(array, mid + 1, right)
 
     return _merge(array, left, mid, right)
 
 
 def _merge(array: list[int], left: int, mid: int, right: int) -> None:
-    array_left = array[left:mid+1]
-    array_right = array[mid+1:right+1]
+    array_left = array[left : mid + 1]
+    array_right = array[mid + 1 : right + 1]
 
     size_left = len(array_left)
     size_right = len(array_right)
@@ -43,4 +43,3 @@ def _merge(array: list[int], left: int, mid: int, right: int) -> None:
         array[i] = array_right[hi]
         hi += 1
         i += 1
-        
