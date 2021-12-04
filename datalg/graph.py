@@ -63,11 +63,11 @@ class DirectedGraph(GraphInterface):
             raise "Node {id} does not exist in the graph".format(id=start_node_id)
 
     def remove_node(self, node_id):
-        if(node_id in self._node):
-            self._nodes.remove(node_id)
+        if(node_id in self._nodes):
+            del self._nodes[node_id]
             for node in self._nodes:
-                if node_id in node.adj_list:
-                    node.adj_list.remove(node_id)
+                if node_id in self._nodes[node].adj_list:
+                    self._nodes[node].adj_list.remove(node_id)
 
 class UndirectedGraph(DirectedGraph):
     
@@ -77,6 +77,6 @@ class UndirectedGraph(DirectedGraph):
     
     def remove_node(self, node_id):
         if(node_id in self._nodes):
-            for edged_node in self._nodes[node_id]:
-                edged_node.adj_list.remove(node_id)
-            self._nodes.remove(node_id)
+            for edged_node in self._nodes[node_id].adj_list:
+                self._nodes[edged_node].adj_list.remove(node_id)
+            del self._nodes[node_id]
