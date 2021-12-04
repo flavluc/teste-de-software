@@ -1,7 +1,9 @@
-def merge_sort(array: list[int]) -> None:
+def merge_sort(array: list[int]) -> list[int]:
     left = 0
     right = len(array) - 1
-    _merge_sort(array, left, right)
+    copy_array = array.copy()
+    _merge_sort(copy_array, left, right)
+    return copy_array
 
 
 def _merge_sort(array: list[int], left: int, right: int) -> None:
@@ -43,3 +45,43 @@ def _merge(array: list[int], left: int, mid: int, right: int) -> None:
         array[i] = array_right[hi]
         hi += 1
         i += 1
+
+
+def merge_sort_inplace(arr):
+    _merge_sort_inplace(arr, 0, len(arr) - 1)
+
+
+def _merge_sort_inplace(arr, left, right):
+    if left < right:
+
+        mid = left + (right - left) // 2
+
+        _merge_sort_inplace(arr, left, mid)
+        _merge_sort_inplace(arr, mid + 1, right)
+
+        _merge_inplace(arr, left, mid, right)
+
+
+def _merge_inplace(arr, start, mid, end):
+    start2 = mid + 1
+
+    if arr[mid] <= arr[start2]:
+        return
+
+    while start <= mid and start2 <= end:
+
+        if arr[start] <= arr[start2]:
+            start += 1
+        else:
+            value = arr[start2]
+            index = start2
+
+            while index != start:
+                arr[index] = arr[index - 1]
+                index -= 1
+
+            arr[start] = value
+
+            start += 1
+            mid += 1
+            start2 += 1
