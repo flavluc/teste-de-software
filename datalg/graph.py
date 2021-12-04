@@ -1,5 +1,5 @@
 class Node:
-    def __init__(self, content):
+    def __init__(self, content=None):
         self.adj_list = set()
         self.content = content
 
@@ -19,10 +19,9 @@ class GraphInterface:
 
     def add_node(self, node_id, node_content):
         if node_id in self._nodes:
-            raise "Cannot add node {id}, it already exists in the graph".\
-                format(
-                    id=node_id
-                )
+            raise "Cannot add node {id},it already exists in the graph".format(
+                id=node_id
+            )
 
         self._nodes[node_id] = Node(node_content)
 
