@@ -64,3 +64,29 @@ def test_bfs_does_not_change_graph(directed_graph):
     assert directed_graph.has_edge_between(0, 2)
     assert directed_graph.has_edge_between(1, 3)
     assert directed_graph.has_edge_between(2, 4)
+
+
+def test_bfs_undirected_graph_cicle(undirected_graph):
+    undirected_graph.add_edge(1, 2)
+    traversal = bfs(undirected_graph, 0)
+    assert (traversal == [0, 1, 2, 3, 4]) | (traversal == [0, 2, 1, 4, 3])
+
+def test_bfs_undirected_graph(undirected_graph):
+    traversal = bfs(undirected_graph, 0)
+    assert (traversal == [0, 1, 2, 3, 4]) | (traversal == [0, 2, 1, 4, 3])
+
+
+def test_bfs_undirected_graph_start_on_leaf(undirected_graph):
+    traversal = bfs(undirected_graph, 4)
+    assert traversal == [4,2,0,1,3]
+
+
+def test_bfs_tree_single_node():
+    tree = Tree()
+    tree.add_node(0, None)
+    assert bfs(tree, 0) == [0]
+
+
+def test_bfs_tree(tree):
+    traversal = bfs(tree, 0)
+    assert (traversal == [0, 1, 2, 3, 4]) | (traversal == [0, 2, 1, 4, 3])
