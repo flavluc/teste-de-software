@@ -18,11 +18,14 @@ class GraphInterface:
     def add_edge(self, start_node_id, end_node_id):
         pass
 
-    def add_node(self, node):
-        pass
-    
     def remove_node(self, node):
         pass
+
+    def add_node(self, node_id, node_content):
+        if (node_id in self._nodes):
+            raise "Cannot add node {id}, it already exists in the graph".format(id=start_node_id)
+
+        self._nodes[node_id] = Node(node_content)
 
     def has_edge_between(self, start_node_id, end_node_id):
         if (start_node_id in self._nodes):
@@ -58,12 +61,6 @@ class DirectedGraph(GraphInterface):
                 raise "Node {id} does not exist in the graph".format(id=end_node_id)
         else:
             raise "Node {id} does not exist in the graph".format(id=start_node_id)
-    
-    def add_node(self, node_id, node_content):
-        if (node_id in self._nodes):
-            raise "Cannot add node {id}, it already exists in the graph".format(id=start_node_id)
-
-        self._nodes[node_id] = Node(node_content)
 
     def remove_node(self, node_id):
         if(node_id in self._node):
@@ -75,7 +72,7 @@ class DirectedGraph(GraphInterface):
 class UndirectedGraph(DirectedGraph):
     
     def add_edge(self, start_node_id, end_node_id):
-        DirectedGraph.add_edge(start_node_id, end_node_id)
+        super().add_edge(start_node_id, end_node_id)
         self._nodes[end_node_id].adj_list.add(start_node_id)
     
     def remove_node(self, node_id):
