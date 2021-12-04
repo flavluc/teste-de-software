@@ -48,16 +48,6 @@ class GraphInterface:
 
         return self._nodes[node_id].content
 
-    """ Check if there is a path that starts from start_node and goes to end_node """
-
-    def has_path(self, start_node, end_node, algorithm):
-        pass
-
-    """ Check if there is a cycle between start_node and end_node """
-
-    def has_cycle(self, start_node, end_node, algorithm):
-        pass
-
 
 class DirectedGraph(GraphInterface):
     def add_edge(self, start_node_id, end_node_id):
