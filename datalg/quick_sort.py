@@ -1,5 +1,6 @@
 import random
 
+
 def _find_pivot(array):
     return array[len(array) // 2]
 
@@ -33,6 +34,7 @@ def _sub_partition(array, start, end, idx_pivot):
 
     array[start], array[i - 1] = array[i - 1], array[start]
     return i - 1
+
 
 def quicksort_inplace(array, start=0, end=None):
 
