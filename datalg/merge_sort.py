@@ -22,25 +22,25 @@ def _merge(array: list[int], left: int, mid: int, right: int) -> None:
 
     size_left = len(array_left)
     size_right = len(array_right)
-    l = r = 0
+    lo = hi = 0
     i = left
 
-    while (l < size_left) and (r < size_right):
-        if array_left[l] < array_right[r]:
-            array[i] = array_left[l]
-            l += 1
+    while (lo < size_left) and (hi < size_right):
+        if array_left[lo] < array_right[hi]:
+            array[i] = array_left[lo]
+            lo += 1
             i += 1
         else:
-            array[i] = array_right[r]
-            r += 1
+            array[i] = array_right[hi]
+            hi += 1
             i += 1
 
-    while l < size_left:
-        array[i] = array_left[l]
-        l += 1
+    while lo < size_left:
+        array[i] = array_left[lo]
+        lo += 1
         i += 1
-    while r < size_right:
-        array[i] = array_right[r]
-        r += 1
+    while hi < size_right:
+        array[i] = array_right[hi]
+        hi += 1
         i += 1
         
