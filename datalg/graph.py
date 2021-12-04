@@ -18,7 +18,7 @@ class GraphInterface:
     def add_edge(self, start_node_id, end_node_id):
         pass
 
-    def remove_node(self, node):
+    def remove_node(self, node_id):
         pass
 
     def add_node(self, node_id, node_content):
