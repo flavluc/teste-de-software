@@ -31,13 +31,11 @@ def undirected_graph():
 
 @pytest.fixture
 def tree():
-    g = Tree()
-    for i in range(5):
-        g.add_node(i, None)
-    g.add_edge(0, 1)
-    g.add_edge(0, 2)
-    g.add_edge(1, 3)
-    g.add_edge(2, 4)
+    g = Tree(0, None)
+    g.add_node(0, 1, None)
+    g.add_node(0, 2, None)
+    g.add_node(1, 3, None)
+    g.add_node(2, 4, None)
     return g
 
 
@@ -104,8 +102,7 @@ def test_dfs_undirected_graph_start_on_leaf(undirected_graph):
 
 
 def test_dfs_tree_single_node():
-    tree = Tree()
-    tree.add_node(0, None)
+    tree = Tree(0, None)
     assert dfs(tree, 0) == [0]
 
 

@@ -29,6 +29,16 @@ def undirected_graph():
     return g
 
 
+@pytest.fixture
+def tree():
+    g = Tree(0, None)
+    g.add_node(0, 1, None)
+    g.add_node(0, 2, None)
+    g.add_node(1, 3, None)
+    g.add_node(2, 4, None)
+    return g
+
+
 def test_bfs_single_node():
     graph = DirectedGraph()
     graph.add_node(0, None)
@@ -83,8 +93,7 @@ def test_bfs_undirected_graph_start_on_leaf(undirected_graph):
 
 
 def test_bfs_tree_single_node():
-    tree = Tree()
-    tree.add_node(0, None)
+    tree = Tree(0, None)
     assert bfs(tree, 0) == [0]
 
 
