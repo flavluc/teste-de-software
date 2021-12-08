@@ -1,7 +1,7 @@
 import pytest
 
 from datalg.dfs import dfs
-from datalg.graph import UndirectedGraph, DirectedGraph
+from datalg.graph import DirectedGraph, UndirectedGraph
 from datalg.tree import Tree
 
 
@@ -75,7 +75,7 @@ def test_dfs_directed_graph_cicle(directed_graph):
 
 
 def test_dfs_does_not_change_graph(directed_graph):
-    traversal = dfs(directed_graph, 0)
+    dfs(directed_graph, 0)
     assert directed_graph.has_edge_between(0, 1)
     assert directed_graph.has_edge_between(0, 2)
     assert directed_graph.has_edge_between(1, 3)
