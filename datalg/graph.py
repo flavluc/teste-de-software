@@ -45,7 +45,6 @@ class GraphInterface:
         return self._nodes[node_id].content
 
 
-
 class DirectedGraph(GraphInterface):
     def add_edge(self, start_node_id, end_node_id):
         if start_node_id in self._nodes:
@@ -66,7 +65,6 @@ class DirectedGraph(GraphInterface):
             for node in self._nodes:
                 if node_id in self._nodes[node].adj_list:
                     self._nodes[node].adj_list.remove(node_id)
-
 
 
 class UndirectedGraph(DirectedGraph):

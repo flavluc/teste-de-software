@@ -28,6 +28,7 @@ def undirected_graph():
     g.add_edge(2, 4)
     return g
 
+
 @pytest.fixture
 def tree():
     g = Tree()
@@ -38,6 +39,7 @@ def tree():
     g.add_edge(1, 3)
     g.add_edge(2, 4)
     return g
+
 
 def test_dfs_graph_single_node():
     graph = DirectedGraph()
@@ -90,6 +92,7 @@ def test_dfs_undirected_graph_cicle(undirected_graph):
         | (traversal == [0, 2, 1, 3, 4])
     )
 
+
 def test_dfs_undirected_graph(undirected_graph):
     traversal = dfs(undirected_graph, 0)
     assert (traversal == [0, 1, 3, 2, 4]) | (traversal == [0, 2, 4, 1, 3])
@@ -97,7 +100,7 @@ def test_dfs_undirected_graph(undirected_graph):
 
 def test_dfs_undirected_graph_start_on_leaf(undirected_graph):
     traversal = dfs(undirected_graph, 4)
-    assert traversal == [4,2,0,1,3]
+    assert traversal == [4, 2, 0, 1, 3]
 
 
 def test_dfs_tree_single_node():

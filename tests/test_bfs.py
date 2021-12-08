@@ -71,6 +71,7 @@ def test_bfs_undirected_graph_cicle(undirected_graph):
     traversal = bfs(undirected_graph, 0)
     assert (traversal == [0, 1, 2, 3, 4]) | (traversal == [0, 2, 1, 4, 3])
 
+
 def test_bfs_undirected_graph(undirected_graph):
     traversal = bfs(undirected_graph, 0)
     assert (traversal == [0, 1, 2, 3, 4]) | (traversal == [0, 2, 1, 4, 3])
@@ -78,7 +79,7 @@ def test_bfs_undirected_graph(undirected_graph):
 
 def test_bfs_undirected_graph_start_on_leaf(undirected_graph):
     traversal = bfs(undirected_graph, 4)
-    assert traversal == [4,2,0,1,3]
+    assert traversal == [4, 2, 0, 1, 3]
 
 
 def test_bfs_tree_single_node():

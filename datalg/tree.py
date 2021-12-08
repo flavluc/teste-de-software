@@ -1,7 +1,6 @@
 from .graph import Node
 
 
-
 class Tree:
     def __init__(self, rootId, rootContent):
         self.__root_content = rootContent

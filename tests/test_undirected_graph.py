@@ -3,7 +3,6 @@ import pytest
 from datalg.graph import UndirectedGraph
 
 
-
 @pytest.fixture
 def undirectedGraph():
     return UndirectedGraph()
