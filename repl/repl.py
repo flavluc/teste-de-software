@@ -98,7 +98,7 @@ class Repl:
 
     def add_graph_edge(self, name, start_node, end_node):
         self.env[name].add_edge(start_node, end_node)
-    
+
     def add_graph_node(self, name, node_id):
         self.env[name].add_node(node_id, None)
 
@@ -110,6 +110,7 @@ class Repl:
     remove directed_graph DG 4
     remove undirected_graph UG 5
     """
+
     def parse_remove(self, args):
         name = args
         structure = self.env[name]
@@ -121,13 +122,12 @@ class Repl:
             name, n = args.split(" ", 1)
             print(self.remove_list_element(name, n))
         elif isinstance(structure, GraphInterface):
-            """ name, n = args.split(" ", 1)
+            """name, n = args.split(" ", 1)
             print("Content:",structure.get_node_content(n))
-            print(self.remove_list_element(name, n)) """
+            print(self.remove_list_element(name, n))"""
             raise NotImplementedError
         elif isinstance(structure, Tree):
             raise NotImplementedError
-    
 
     def create(self, name, structure):
         self.env[name] = structure

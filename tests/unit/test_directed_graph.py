@@ -72,9 +72,11 @@ def test_if_has_edge_between_nodes(directedGraph):
     directedGraph.add_edge(0, 1)
     assert directedGraph.has_edge_between(0, 1)
 
+
 def test_add_node_in_a_unexistent_start_node(directedGraph):
     with pytest.raises(Exception) as _:
         assert directedGraph.add_edge(1, 0)
+
 
 def test_add_node_in_a_unexistent_end_node(directedGraph):
     directedGraph.add_node(1, None)
