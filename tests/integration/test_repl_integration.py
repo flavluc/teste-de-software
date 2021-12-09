@@ -2,7 +2,7 @@ import pytest
 
 from repl.repl import Repl
 from datalg.stack import Stack
-from datalg.graph import DirectedGraph
+from datalg.graph import DirectedGraph, UndirectedGraph
 from datalg.queue import Queue
 
 
@@ -51,3 +51,11 @@ def test_multiple_data_strucures_creation(repl):
     repl.create("Q", Queue())
     assert isinstance(repl.env["G"], DirectedGraph)
     assert isinstance(repl.env["Q"], Queue)
+
+
+def test_create_undirected_graph_with_two_connected_nodes(repl):
+    repl.create("G", UndirectedGraph())
+    repl.add_graph_node("G", 1)
+    repl.add_graph_node("G", 2)
+    repl.add_graph_edge("G", 1, 2)
+    assert repl.bfs_path("G", 2) == "[2, 1]"
