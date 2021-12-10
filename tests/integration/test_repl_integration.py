@@ -1,11 +1,11 @@
-import pytest
-
 import sys
 
-from repl.repl import Repl
-from datalg.stack import Stack
+import pytest
+
 from datalg.graph import DirectedGraph, UndirectedGraph
 from datalg.queue import Queue
+from datalg.stack import Stack
+from repl.repl import Repl
 
 
 @pytest.fixture

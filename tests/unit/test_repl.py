@@ -1,7 +1,8 @@
+from io import StringIO
+
 import pytest
 
 from repl.repl import Repl
-from io import StringIO
 
 
 @pytest.fixture
