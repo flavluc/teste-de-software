@@ -1,3 +1,5 @@
+import sys
+
 from datalg.bfs import bfs
 from datalg.binary_search import binary_search
 from datalg.dfs import dfs
@@ -9,16 +11,17 @@ from datalg.tree import Tree
 
 
 class Repl:
-    def __init__(self):
+    def __init__(self, output_stream):
         self.env = {}
         self.history = Stack()
+        self.__ostream = output_stream
 
     def eval(self, msg):
         command = msg.split(" ", 1)[0]
 
         if command == "list":
             for key in self.env:
-                print(key + ": " + str(self.env[key]))
+                print(key + ": " + str(self.env[key]), file=self.__ostream)
             return
 
         args = msg.split(" ", 1)[1]
@@ -46,18 +49,17 @@ class Repl:
 
     def bin_search(self, name, el):
         arr = self.enf[name].to_list()
-        print(binary_search(arr, el))
+        print(binary_search(arr, el), file=self.__ostream)
 
     def parse_search(self, args):
         alg, name, args = args.split(" ")
         el = int(args)
-        structure = self.env[name]
         if alg == "bfs":
-            print(bfs_path(name, el))
+            print(self.bfs_path(name, el), file=self.__ostream)
         elif alg == "dfs":
-            print(dfs_path(name, el))
+            print(self.dfs_path(name, el), file=self.__ostream)
         elif alg == "binary":
-            print(bin_search(name, el))
+            print(self.bin_search(name, el), file=self.__ostream)
 
     def parse_create(self, args):
         structure, name = args.split(" ", 1)
@@ -85,12 +87,12 @@ class Repl:
             el, n = args.split()
             self.add_list_element(name, el, n)
         elif isinstance(structure, GraphInterface):
-            elm_type, args = args.split(" ", 1)
+            elm_type = args.split(" ", 1)[0]
             if elm_type == "edge":
-                start_node, end_node = args.split()
-                self.add_graph_edge(name, start_node, end_node)
+                _, start_node, end_node = args.split(" ", 2)
+                self.add_graph_edge(name, int(start_node), int(end_node))
             elif elm_type == "node":
-                self.add_graph_node(name, args)
+                self.add_graph_node(name, args.split(" ", 1)[1])
             else:
                 raise NotImplementedError
         elif isinstance(structure, Tree):
@@ -100,32 +102,25 @@ class Repl:
         self.env[name].add_edge(start_node, end_node)
 
     def add_graph_node(self, name, node_id):
-        self.env[name].add_node(node_id, None)
+        self.env[name].add_node(int(node_id), int(node_id))
 
-    """
-    TODO: fix the parse_remove 
-    remove stack S
-    remove queue Q
-    remove linke_list LL 3
-    remove directed_graph DG 4
-    remove undirected_graph UG 5
-    """
+    def remove_graph_element(self, name, node_id):
+        self.env[name].remove_node(node_id)
 
     def parse_remove(self, args):
-        name = args
+        name = args.split(" ", 1)[0]
         structure = self.env[name]
         if isinstance(structure, Stack):
-            print(self.remove_stack_element(name))
+            print(self.remove_stack_element(name), file=self.__ostream)
         elif isinstance(structure, Queue):
-            print(self.remove_queue_element(name))
+            print(self.remove_queue_element(name), file=self.__ostream)
         elif isinstance(structure, LinkedList):
-            name, n = args.split(" ", 1)
-            print(self.remove_list_element(name, n))
+            n = args.split(" ", 1)[1]
+            print(self.remove_list_element(name, n), file=self.__ostream)
         elif isinstance(structure, GraphInterface):
-            """name, n = args.split(" ", 1)
-            print("Content:",structure.get_node_content(n))
-            print(self.remove_list_element(name, n))"""
-            raise NotImplementedError
+            _, n = args.split(" ", 1)
+            print(structure.get_node_content(int(n)), file=self.__ostream)
+            self.remove_graph_element(name, n)
         elif isinstance(structure, Tree):
             raise NotImplementedError
 
@@ -164,12 +159,12 @@ class Repl:
     def remove_list_element(self, name, n):
         li = self.env[name]
         if n == "head":
-            return li.delete_head()
+            return li.delete_head().content
         elif n == "tail":
-            return li.delete_tail()
+            return li.delete_tail().content
         else:
             n = int(n)
-            return li.delete_nth(n)
+            return li.delete_nth(n).content
 
     def loop(self):
         try:
@@ -181,9 +176,9 @@ class Repl:
                     self.history.push(_in)
                     self.eval(_in)
                 except Exception as e:
-                    print(f"Error: {e}")
+                    print(f"Error: {e}", file=self.__ostream)
         except KeyboardInterrupt:
-            print("\nExiting...")
+            print("\nExiting...", file=self.__ostream)
 
 
 if __name__ == "__main__":
@@ -191,5 +186,5 @@ if __name__ == "__main__":
     print("Welcome to python datalg-REPL")
     print("crtl-c to quit")
     print()
-    repl = Repl()
+    repl = Repl(sys.stdout)
     repl.loop()

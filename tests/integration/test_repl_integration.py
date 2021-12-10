@@ -1,5 +1,7 @@
 import pytest
 
+import sys
+
 from repl.repl import Repl
 from datalg.stack import Stack
 from datalg.graph import DirectedGraph, UndirectedGraph
@@ -8,7 +10,7 @@ from datalg.queue import Queue
 
 @pytest.fixture
 def repl():
-    return Repl()
+    return Repl(sys.stdout)
 
 
 def test_empty_repl(repl):

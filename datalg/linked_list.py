@@ -71,6 +71,10 @@ class LinkedList:
     def delete_tail(self):
         current = self.head
 
+        if current.next is None:
+            self.head = None
+            return current
+
         while current.next.next:
             current = current.next
         deleted = current.next
