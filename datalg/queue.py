@@ -19,3 +19,6 @@ class Queue:
 
     def dequeue(self):
         return self._queue.pop(0)
+
+    def to_list(self):
+        return self._queue

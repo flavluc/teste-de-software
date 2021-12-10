@@ -127,14 +127,20 @@ def test_repl_list_removing_from_nth(repl_ostream):
     assert ostream.getvalue() == "3\n"
 
 
-def test_repl_tree_creation_unavailability(repl_ostream):
-    (repl, _) = repl_ostream
-    with pytest.raises(NotImplementedError) as _:
-        repl.eval("create tree T")
+def test_repl_tree_creation(repl_ostream):
+    (repl, ostream) = repl_ostream
+    repl.eval("create tree T 0 0")
+    repl.eval("add T 0 1 1")
+    assert repl.env["T"].get_node_content(0) == 0
+    assert repl.env["T"].get_node_content(1) == 1
+    assert repl.env["T"].get_path_until(1) == [0, 1]
 
 
-def test_repl_adding_unknown_element_type_to_grpah(repl_ostream):
-    (repl, _) = repl_ostream
-    repl.eval("create directed_graph G")
-    with pytest.raises(NotImplementedError) as _:
-        repl.eval("add G dummy_type")
+def test_repl_quicksort(repl_ostream):
+    (repl, ostream) = repl_ostream
+    repl.eval("create stack S")
+    repl.eval("add S 2")
+    repl.eval("add S 0")
+    repl.eval("add S 1")
+    repl.eval("sort quick_sort S")
+    assert ostream.getvalue().split("\n")[0] == "[0, 1, 2]"

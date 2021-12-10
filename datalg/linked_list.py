@@ -17,7 +17,17 @@ class LinkedList:
             current = current.next
         return n
 
-    def to_python_list(self):
+    def __str__(self):
+        return str(self.to_list())
+
+    def iter(self):
+        current = self.head
+
+        while current:
+            yield current
+            current = current.next
+
+    def to_list(self):
         plist = []
         current = self.head
 

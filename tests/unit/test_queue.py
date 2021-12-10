@@ -58,3 +58,10 @@ def test_populated_serialization(queue):
     queue.enqueue(1)
     queue.enqueue(2)
     assert str(queue) == "[1, 2]"
+
+
+def test_to_list(queue):
+    queue.enqueue(1)
+    queue.enqueue(2)
+    queue.enqueue(3)
+    assert queue.to_list() == [1, 2, 3]

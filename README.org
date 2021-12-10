@@ -18,7 +18,10 @@ O trabalho consiste na escrita de um programa e um conjunto de testes. Os testes
 
 ** Etapa 2
 
-@TODO
+- Implementar 5 testes de integração ou e2e
+- Rodar  cobertura  de  testes  no  workflow  do  GitHub  Actions
+- Publicar  os  relatórios  de  cobertura  no  Codecov  através  do  GitHub  Actionw
+
 
 * Projeto do sistema
 
@@ -39,6 +42,33 @@ A principal premissa a seguir é que seja algo de rápida implementação e alta
 - `BFS`
 - `DFS`
 
+Pensando em uma aplicação didática e na necessidade de implementar testes de 
+integração/e2e, decidiu-se implementar um repl, o qual funciona com os seguintes comandos:
+
+#+begin_src
+create {queue | stack | list | undirected_graph | directed_graph} <STRUCTURE_NAME>
+delete <STRUCTURE_NAME>
+add <STRUCTURE_NAME> <ELEMENT> [position]
+remove <STRUCTURE_NAME>
+#+end_src
+
+Para queue, stack e linked list apenas:
+
+#+begin_src
+sort {quick_sort | merge_sort | bubble_sort} <STRUCTURE_NAME>
+search binary <STRUCTURE_NAME> <ELEMENT>
+#+end_src
+
+Para grafos apenas:
+
+#+begin_src
+search {bfs | dfs} <STRUCTURE_NAME> <START_NODE_ID>
+add <STRUCTURE_NAME> edge <NODE_ID_1> <NODE_ID_2>
+add <STRUCTURE_NAME> node <NODE_ID>
+remove <STRUCTURE_NAME> <NODE_ID>
+#+end_src
+
+
 *** Com qual tech stack?
 
 As tecnologias escolhidas foram:
@@ -50,6 +80,14 @@ As tecnologias escolhidas foram:
 - Formatter: Black, Isort
 
 * Como executar
+
+*** Como executar o repl:
+
+#+begin_src
+python main.py
+#+end_src
+
+*** Para desenvolvedores:
 
 Instale a ferramenta de gerenciamento de dependências `poetry`:
 

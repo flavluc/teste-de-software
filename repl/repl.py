@@ -1,11 +1,15 @@
 import sys
+import time
 
 from datalg.bfs import bfs
 from datalg.binary_search import binary_search
+from datalg.bubble_sort import bubble_sort
 from datalg.dfs import dfs
 from datalg.graph import DirectedGraph, GraphInterface, UndirectedGraph
 from datalg.linked_list import LinkedList
+from datalg.merge_sort import merge_sort
 from datalg.queue import Queue
+from datalg.quick_sort import quicksort
 from datalg.stack import Stack
 from datalg.tree import Tree
 
@@ -35,7 +39,7 @@ class Repl:
         elif command == "remove":
             self.parse_remove(args)
         elif command == "sort":
-            raise NotImplementedError
+            self.parse_sort(args)
         elif command == "search":
             self.parse_search(args)
         else:
@@ -48,8 +52,31 @@ class Repl:
         return str(bfs(self.env[name], el))
 
     def bin_search(self, name, el):
-        arr = self.enf[name].to_list()
+        arr = self.env[name].to_list()
         print(binary_search(arr, el), file=self.__ostream)
+
+    def sort(self, li, sort_alg, inplace=False):
+        t1 = time.time()
+        if inplace:
+            sort_alg(li)
+            t2 = time.time()
+            print(li, file=self.__ostream)
+        else:
+            li = sort_alg(li)
+            t2 = time.time()
+            print(li, file=self.__ostream)
+        print("Tempo: " + str(t2 - t1), file=self.__ostream)
+
+    def parse_sort(self, args):
+        alg, name = args.split(" ")
+        structure = self.env[name]
+        li = structure.to_list()
+        if alg == "quick_sort":
+            self.sort(li, quicksort)
+        elif alg == "merge_sort":
+            self.sort(li, merge_sort)
+        elif alg == "bubble_sort":
+            self.sort(li, bubble_sort, inplace=True)
 
     def parse_search(self, args):
         alg, name, args = args.split(" ")
@@ -74,7 +101,8 @@ class Repl:
         elif structure == "undirected_graph":
             self.create(name, UndirectedGraph())
         elif structure == "tree":
-            raise NotImplementedError
+            _, name, root_id, content = args.split(" ", 3)
+            self.create(name, Tree(int(root_id), int(content)))
 
     def parse_add(self, args):
         name, args = args.split(" ", 1)
@@ -93,16 +121,20 @@ class Repl:
                 self.add_graph_edge(name, int(start_node), int(end_node))
             elif elm_type == "node":
                 self.add_graph_node(name, args.split(" ", 1)[1])
-            else:
-                raise NotImplementedError
         elif isinstance(structure, Tree):
-            raise NotImplementedError
+            parent_id, node_id, content = args.split(" ", 2)
+            self.add_tree_node(
+                name, int(parent_id), int(node_id), int(content)
+            )
 
     def add_graph_edge(self, name, start_node, end_node):
         self.env[name].add_edge(start_node, end_node)
 
     def add_graph_node(self, name, node_id):
         self.env[name].add_node(int(node_id), int(node_id))
+
+    def add_tree_node(self, name, parent_id, node_id, content):
+        self.env[name].add_node(parent_id, node_id, content)
 
     def remove_graph_element(self, name, node_id):
         self.env[name].remove_node(node_id)
@@ -121,8 +153,6 @@ class Repl:
             _, n = args.split(" ", 1)
             print(structure.get_node_content(int(n)), file=self.__ostream)
             self.remove_graph_element(name, n)
-        elif isinstance(structure, Tree):
-            raise NotImplementedError
 
     def create(self, name, structure):
         self.env[name] = structure

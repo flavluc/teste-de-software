@@ -58,3 +58,10 @@ def test_populated_serialization(stack):
     stack.push(1)
     stack.push(2)
     assert str(stack) == "[1, 2]"
+
+
+def test_to_list(stack):
+    stack.push(1)
+    stack.push(2)
+    stack.push(3)
+    assert stack.to_list() == [1, 2, 3]
