@@ -23,7 +23,7 @@ def test_tree_correct_path(tree):
     tree.add_node(2, 7, None)
     tree.add_node(0, 8, None)
 
-    assert tree.get_path_until(8) == [0, 8]
+    assert tree.get_path_until(5) == [0, 1, 2, 5]
 
 
 def test_tree_path_for_unexistent_node(tree):

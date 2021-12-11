@@ -19,3 +19,6 @@ class Stack:
 
     def pop(self):
         return self._stack.pop()
+
+    def to_list(self):
+        return self._stack

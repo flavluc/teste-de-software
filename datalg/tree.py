@@ -32,22 +32,24 @@ class Tree:
 
     def get_path_until(self, node_id):
         self.__validate_node_existence(node_id)
-        return self.__get_path(self.__root_id, node_id, [])
+        accumaltive_list = []
+        self.__get_path(self.__root_id, node_id, accumaltive_list)
+        return accumaltive_list
 
     def __get_path(self, current_element_id, end_node_id, accumaltive_list):
         accumaltive_list.append(current_element_id)
         if end_node_id == current_element_id:
-            return accumaltive_list
+            return True
         else:
             curr_node = self._nodes[current_element_id]
             for next_node in curr_node.adj_list:
                 result = self.__get_path(
                     next_node, end_node_id, accumaltive_list
                 )
-                if len(result) > 0:
-                    return result
-
-            return []
+                if result:
+                    return True
+            accumaltive_list.pop()
+            return False
 
     def update_node_content(self, node_id, new_content):
         self.__validate_node_existence(node_id)

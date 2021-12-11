@@ -11,12 +11,6 @@ class GraphInterface:
     def empty(self):
         return len(self._nodes) == 0
 
-    def add_edge(self, start_node_id, end_node_id):
-        pass
-
-    def remove_node(self, node_id):
-        pass
-
     def add_node(self, node_id, node_content):
         if node_id in self._nodes:
             raise "Cannot add node {id},it already exists in the graph".format(

@@ -17,6 +17,13 @@ def test_undirected_grap_adding_one_node_none_content(undirectedGraph):
     assert undirectedGraph.get_node_content(1) is None
 
 
+def test_undirected_graph_getting_content_from_unexistent_node(
+    undirectedGraph,
+):
+    with pytest.raises(Exception) as _:
+        assert undirectedGraph.get_node_content(1) is None
+
+
 def test_undirected_graph_create_one_undirected_egde(undirectedGraph):
     undirectedGraph.add_node(1, None)
     undirectedGraph.add_node(2, None)
